@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
+import * as MoviesActions from '../../store/modules/Movies/actions';
 
 const Home: React.FC = () => {
-  return <h1>Home</h1>;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(MoviesActions.LoadMoviesRequest());
+  }, [dispatch]);
+
+  return <h1>Casa</h1>;
 };
 
 export default Home;
