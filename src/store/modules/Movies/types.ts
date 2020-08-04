@@ -2,6 +2,9 @@ export enum MoviesActions {
   LOAD_REQUEST = '@movies/LOAD_REQUEST',
   LOAD_SUCCESS = '@movies/LOAD_SUCCESS',
   LOAD_FAILURE = '@movies/LOAD_FAILURE',
+
+  UPDATE_PAGE_REQUEST = '@movies/UPDATE_PAGE_REQUEST',
+  UPDATE_PAGE_SUCCESS = '@movies/SUCCESS_PAGE_REQUEST',
 }
 
 export interface IGenres {

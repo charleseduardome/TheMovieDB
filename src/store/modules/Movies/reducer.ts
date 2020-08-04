@@ -20,6 +20,14 @@ const Movies: Reducer<MoviesState> = (state = INITIAL_STATE, action) => {
         draft.results = action.payload.results;
         break;
       }
+
+      case MoviesActions.UPDATE_PAGE_SUCCESS: {
+        draft.page = action.payload.page;
+        draft.total_results = action.payload.total_results;
+        draft.total_pages = action.payload.total_pages;
+        draft.results = action.payload.results;
+        break;
+      }
     }
   });
 };

@@ -33,6 +33,7 @@ const Home: React.FC = () => {
     event: React.ChangeEvent<unknown>,
     value: number,
   ) => {
+    dispatch(MoviesActions.UpdatePageRequest(value));
     window.scrollTo(0, 0);
   };
 
