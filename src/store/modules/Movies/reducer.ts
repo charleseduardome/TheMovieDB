@@ -14,7 +14,7 @@ const Movies: Reducer<MoviesState> = (state = INITIAL_STATE, action) => {
   return producer(state, draft => {
     switch (action.type) {
       case MoviesActions.LOAD_SUCCESS: {
-        draft.page = action.page;
+        draft.page = action.payload.page;
         draft.total_results = action.payload.total_results;
         draft.total_pages = action.payload.total_pages;
         draft.results = action.payload.results;
