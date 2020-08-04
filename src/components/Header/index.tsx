@@ -29,7 +29,7 @@ const Header: React.FC<IProps> = ({ handleSearch }) => {
     <Container>
       <img src={Logo} alt="" />
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input name="search" placeholder="Procurar filme" icon={BsSearch} />
+        <Input name="search" placeholder="Search movie" icon={BsSearch} />
       </Form>
     </Container>
   );
