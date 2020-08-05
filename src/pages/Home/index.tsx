@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { AiFillStar } from 'react-icons/ai';
 import Pagination from '@material-ui/lab/Pagination';
 
@@ -18,11 +19,15 @@ interface ISearch {
 const Home: React.FC = () => {
   const dispatch = useDispatch();
 
+  const stateMovies = useSelector((state: any) => state.Movies);
+
   useEffect(() => {
+    if (stateMovies.page !== 1) {
+      return;
+    }
+
     dispatch(MoviesActions.LoadMoviesRequest());
   }, [dispatch]);
-
-  const stateMovies = useSelector((state: any) => state.Movies);
 
   const handleSearch = useCallback(async (data: ISearch) => {
     const { search } = data;
@@ -46,7 +51,7 @@ const Home: React.FC = () => {
 
         <ContentMovies>
           {stateMovies.results.map((movie: Movie) => (
-            <li key={movie.id}>
+            <Link key={movie.id} to={`/movie/${movie.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                 alt=""
@@ -56,7 +61,7 @@ const Home: React.FC = () => {
                 <AiFillStar color="#f4f006" size={20} />
                 <span>{movie.vote_average}</span>
               </div>
-            </li>
+            </Link>
           ))}
         </ContentMovies>
         <ContentPagination>

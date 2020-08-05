@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: row;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 30px;
   width: 80%;
 
   justify-content: center;
@@ -13,7 +14,7 @@ export const Container = styled.div`
 export const Poster = styled.div`
   img {
     width: 100%;
-    max-width: 900px;
+    max-width: 700px;
     height: auto;
   }
 `;
@@ -29,7 +30,16 @@ export const DetailMovie = styled.div`
     font-weight: bold;
   }
 
+  h3 {
+    color: #fff;
+    font-size: 15px;
+  }
+
   div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
     span {
       color: #fff;
       font-size: 35px;
@@ -40,5 +50,24 @@ export const DetailMovie = styled.div`
   p {
     color: #fff;
     font-size: 16px;
+  }
+
+  button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: none;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+
+    h2 {
+      font-size: 40px;
+    }
+
+    svg {
+      margin-left: 20px;
+    }
   }
 `;

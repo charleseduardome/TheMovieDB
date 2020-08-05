@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin: 0 30px;
+  margin: 100px 30px 0 30px;
 
   h1 {
     color: #fff;
@@ -17,9 +17,10 @@ export const ContentMovies = styled.ul`
   grid-gap: 10px;
   list-style: none;
   margin-top: 30px;
-  li {
+  a {
     display: flex;
     flex-direction: column;
+    text-decoration: none;
     border-radius: 4px;
     padding: 10px;
 
