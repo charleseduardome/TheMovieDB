@@ -5,6 +5,9 @@ export enum MoviesActions {
 
   UPDATE_PAGE_REQUEST = '@movies/UPDATE_PAGE_REQUEST',
   UPDATE_PAGE_SUCCESS = '@movies/SUCCESS_PAGE_REQUEST',
+
+  SEARCH_REQUEST = '@movies/SEARCH_REQUEST',
+  SEARCH_RESULTS = '@movies/SEARCH_RESULTS',
 }
 
 export interface IGenres {
@@ -33,5 +36,6 @@ export interface MoviesState {
   readonly page: number;
   readonly total_results: number;
   readonly total_pages: number;
+  readonly term_search: string;
   readonly results: Movie[];
 }

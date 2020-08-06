@@ -1,7 +1,9 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillStar } from 'react-icons/ai';
 import Pagination from '@material-ui/lab/Pagination';
+
+import { debounce } from 'lodash';
 
 import { useSelector, useDispatch } from 'react-redux';
 import * as MoviesActions from '../../store/modules/Movies/actions';
@@ -22,23 +24,23 @@ const Home: React.FC = () => {
   const stateMovies = useSelector((state: any) => state.Movies);
 
   useEffect(() => {
-    if (stateMovies.page !== 1) {
+    if (stateMovies.page > 1 || stateMovies.term_search !== '') {
       return;
     }
 
     dispatch(MoviesActions.LoadMoviesRequest());
-  }, [dispatch]);
+  }, [dispatch, stateMovies.page, stateMovies.term_search]);
 
-  const handleSearch = useCallback(async (data: ISearch) => {
-    const { search } = data;
-    console.log(search);
-  }, []);
+  const handleSearch = debounce(async (data: ISearch) => {
+    dispatch(MoviesActions.SearchMoviesRequest(data.search));
+  }, 500);
 
   const handleChangePage = (
     event: React.ChangeEvent<unknown>,
     value: number,
   ) => {
     dispatch(MoviesActions.UpdatePageRequest(value));
+
     window.scrollTo(0, 0);
   };
 
@@ -53,7 +55,7 @@ const Home: React.FC = () => {
           {stateMovies.results.map((movie: Movie) => (
             <Link key={movie.id} to={`/movie/${movie.id}`}>
               <img
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
                 alt=""
               />
               <strong>{movie.title}</strong>

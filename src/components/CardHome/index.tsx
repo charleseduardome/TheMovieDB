@@ -14,17 +14,17 @@ const CardHome: React.FC<IProps> = ({ movie }) => {
     <Container>
       <Poster>
         <img
-          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
           alt=""
         />
       </Poster>
       <DetailMovie>
-        <strong>{movie.title}</strong>
+        <strong>{movie?.title}</strong>
         <div>
           <AiFillStar color="#f4f006" size={25} />
-          <span>{movie.vote_average}</span>
+          <span>{movie?.vote_average}</span>
         </div>
-        <p>{movie.overview}</p>
+        <p>{movie?.overview}</p>
       </DetailMovie>
     </Container>
   );

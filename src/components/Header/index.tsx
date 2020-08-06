@@ -1,6 +1,10 @@
 import React, { useCallback, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormHandles } from '@unform/core';
 import { BsSearch } from 'react-icons/bs';
+
+import { useDispatch } from 'react-redux';
+import * as MoviesActions from '../../store/modules/Movies/actions';
 
 import { Container, Form } from './styles';
 
@@ -16,6 +20,9 @@ interface IProps {
 }
 
 const Header: React.FC<IProps> = ({ handleSearch }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
@@ -25,9 +32,16 @@ const Header: React.FC<IProps> = ({ handleSearch }) => {
     [handleSearch],
   );
 
+  const handleRefresh = () => {
+    dispatch(MoviesActions.LoadMoviesRequest());
+    history.push('/');
+  };
+
   return (
     <Container>
-      <img src={Logo} alt="" />
+      <button onClick={handleRefresh}>
+        <img src={Logo} alt="" />
+      </button>
       <Form ref={formRef} onSubmit={handleSubmit}>
         <Input name="search" placeholder="Search movie" icon={BsSearch} />
       </Form>

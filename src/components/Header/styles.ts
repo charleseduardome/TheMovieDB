@@ -9,9 +9,13 @@ export const Container = styled.div`
   width: 100%;
   padding: 10px;
 
-  img {
-    width: 100px;
-    height: auto;
+  button {
+    background: none;
+    border: none;
+    img {
+      width: 100px;
+      height: auto;
+    }
   }
 `;
 

@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
+import { debounce } from 'lodash';
+
 import {
   AiFillStar,
   AiOutlineLeftCircle,
@@ -6,7 +8,7 @@ import {
 } from 'react-icons/ai';
 
 import { getYear } from 'date-fns';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 
 import { useParams } from 'react-router-dom';
@@ -14,6 +16,7 @@ import { Movie as MovieSelected } from '../../store/modules/Movies/types';
 
 import { Container, Poster, DetailMovie } from './styles';
 
+import * as MoviesActions from '../../store/modules/Movies/actions';
 import Header from '../../components/Header';
 
 interface ISearch {
@@ -21,6 +24,7 @@ interface ISearch {
 }
 
 const Movie: React.FC = () => {
+  const dispatch = useDispatch();
   const { idMovie } = useParams();
   const history = useHistory();
   const [movieSelected, setMovieSelected] = useState<MovieSelected>();
@@ -40,13 +44,12 @@ const Movie: React.FC = () => {
     }
 
     setMovieSelected(selected);
-    setDeleaseDate(getYear(new Date(selected.release_date)));
+    setDeleaseDate(getYear(new Date(selected?.release_date)));
   }, [stateMovies.results, idMovie, history]);
 
-  const handleSearch = useCallback(async (data: ISearch) => {
-    const { search } = data;
-    console.log(search);
-  }, []);
+  const handleSearch = debounce(async (data: ISearch) => {
+    dispatch(MoviesActions.SearchMoviesRequest(data.search));
+  }, 500);
 
   return (
     <>
@@ -61,7 +64,7 @@ const Movie: React.FC = () => {
       <Container>
         <Poster>
           <img
-            src={`https://image.tmdb.org/t/p/original${movieSelected?.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w400${movieSelected?.poster_path}`}
             alt=""
           />
         </Poster>
