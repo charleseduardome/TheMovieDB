@@ -1,4 +1,4 @@
-# Apllicação ReactJS para consumir dados de filmes da API The Movie Databese
+# Aplicação ReactJS para consumir dados de filmes da API The Movie Databese
 
 ## Sobre o projeto
 
