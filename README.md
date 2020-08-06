@@ -4,9 +4,9 @@
 
 Aplicação lista os filmes mais populares do momento, consumindo a API do [TheMovieDB](https://developers.themoviedb.org/), tela inicial mostrar uma listagem dos filmes mais populares, os mais populares sendo exibidos no topo da lista. Cada filme possui uma página especifica com mais detalhes.
 
-## 🚀 Technologies
+## 🚀 Tecnologias
 
-Tecnologias que eu usei para desenvolver web client
+Tecnologias usadas
 
 - [ReactJS](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -23,7 +23,7 @@ Tecnologias que eu usei para desenvolver web client
 
 ### Requisitos
 
-- Solicitar KEY da API [API](https://developers.themoviedb.org/3/getting-started/introduction)
+- Solicitar KEY da API em [TheMovieDB](https://developers.themoviedb.org/3/getting-started/introduction)
 
 **Clone o projeto e acesse a pasta**
 
