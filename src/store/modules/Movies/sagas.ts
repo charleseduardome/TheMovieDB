@@ -11,10 +11,11 @@ import { AnyAction } from 'redux';
 
 function* requestMovies() {
   try {
-    const response = yield call(
-      api.get,
-      '/movie/top_rated?api_key=ac3406358c42270b1c158345d03cc06c',
-    );
+    const response = yield call(api.get, '/movie/top_rated', {
+      params: {
+        api_key: process.env.REACT_APP_API_KEY,
+      },
+    });
     yield put(LoadMoviesSuccess(response.data));
   } catch (error) {
     throw new Error('Err');
@@ -24,15 +25,12 @@ function* requestMovies() {
 function* requestUpdatePage({ payload }: AnyAction) {
   const { page } = payload;
   try {
-    const response = yield call(
-      api.get,
-      '/movie/top_rated?api_key=ac3406358c42270b1c158345d03cc06c',
-      {
-        params: {
-          page,
-        },
+    const response = yield call(api.get, '/movie/top_rated', {
+      params: {
+        api_key: process.env.REACT_APP_API_KEY,
+        page,
       },
-    );
+    });
     yield put(UpdatePageSuccess(response.data));
   } catch (error) {
     throw new Error('Err');
@@ -42,10 +40,12 @@ function* requestUpdatePage({ payload }: AnyAction) {
 function* requestSearch({ payload }: AnyAction) {
   const { search } = payload;
   try {
-    const response = yield call(
-      api.get,
-      `/search/movie?api_key=ac3406358c42270b1c158345d03cc06c&query=${search}`,
-    );
+    const response = yield call(api.get, `/search/movie`, {
+      params: {
+        api_key: process.env.REACT_APP_API_KEY,
+        query: search,
+      },
+    });
     yield put(SearchMoviesSuccess(response.data, search));
   } catch (error) {
     throw new Error('Err');

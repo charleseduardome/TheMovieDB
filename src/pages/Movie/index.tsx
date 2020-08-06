@@ -64,7 +64,7 @@ const Movie: React.FC = () => {
       <Container>
         <Poster>
           <img
-            src={`https://image.tmdb.org/t/p/w400${movieSelected?.poster_path}`}
+            src={`${process.env.REACT_APP_BASE_URL_IMAGEM}${movieSelected?.poster_path}`}
             alt=""
           />
         </Poster>

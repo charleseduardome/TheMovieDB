@@ -55,7 +55,7 @@ const Home: React.FC = () => {
           {stateMovies.results.map((movie: Movie) => (
             <Link key={movie.id} to={`/movie/${movie.id}`}>
               <img
-                src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
+                src={`${process.env.REACT_APP_BASE_URL_IMAGEM}${movie.poster_path}`}
                 alt=""
               />
               <strong>{movie.title}</strong>
