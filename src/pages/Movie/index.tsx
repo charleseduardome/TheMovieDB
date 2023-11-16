@@ -39,6 +39,8 @@ const Movie: React.FC = () => {
       if (currentMovie.id === Number(idMovie)) {
         return currentMovie;
       }
+
+      return {} as MovieSelected;
     });
 
     if (!selected) {
@@ -47,7 +49,7 @@ const Movie: React.FC = () => {
 
     setMovieSelected(selected);
     setDeleaseDate(getYear(new Date(selected?.release_date)));
-  }, [stateMovies.results, idMovie, history]);
+  }, [stateMovies.results, idMovie, history, stateMovies]);
 
   const handleSearch = debounce(async (data: ISearch) => {
     dispatch(MoviesActions.SearchMoviesRequest(data.search));
