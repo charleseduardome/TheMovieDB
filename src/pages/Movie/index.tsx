@@ -35,12 +35,11 @@ const Movie: React.FC = () => {
   const stateMovies = useSelector((state: any) => state.Movies);
 
   useEffect(() => {
+    // eslint-disable-next-line
     const selected = stateMovies.results.find((currentMovie: MovieSelected) => {
       if (currentMovie.id === Number(idMovie)) {
         return currentMovie;
       }
-
-      return {} as MovieSelected;
     });
 
     if (!selected) {
