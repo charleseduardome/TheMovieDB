@@ -25,7 +25,9 @@ interface ISearch {
 
 const Movie: React.FC = () => {
   const dispatch = useDispatch();
-  const { idMovie } = useParams();
+  const { idMovie } = useParams() as {
+    idMovie: string;
+  };
   const history = useHistory();
   const [movieSelected, setMovieSelected] = useState<MovieSelected>();
   const [releaseDate, setDeleaseDate] = useState(0);
